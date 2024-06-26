@@ -12,7 +12,7 @@
             Con te le ho scese perché sapevo che di noi due<br>
             le sole vere pupille, sebbene tanto offuscate,<br>
             erano le tue. ';
-    $badword = $_GET["badword"];
+    $badword = isset($_GET['badword']) ? $_GET['badword'] : '';
     $censored = str_ireplace("$badword", "***", $string);
 ?>
 
@@ -27,6 +27,7 @@
     <main>
             <h1>La frase da censurare era: </h1>
             <p><?php echo $string ?></p>
+            <p>composta in totale da <?php echo strlen($string); ?> caratteri</p>
 
             <form action="./index.php" method="GET">
                 <input type="text" name="badword" id="badword">
@@ -39,7 +40,6 @@
             <p>
                 <?php echo $censored ?> 
             </p>
-
     </main>
 </body>
 </html>
